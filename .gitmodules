@@ -1,0 +1,3 @@
+[submodule "opencv-face-framework"]
+	path = opencv-face-framework
+	url = https://github.com/giomurru/opencv-face-framework.git
