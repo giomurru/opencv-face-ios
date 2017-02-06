@@ -1,11 +1,11 @@
-#import <opencv2/opencv.hpp>
+#import "FaceDetector.hpp"
 #import <opencv2/videoio/cap_ios.h>
 #import <opencv2/objdetect.hpp>
 
 #import "ViewController.h"
 
 using namespace cv;
-
+using namespace gm;
 @interface ViewController () <CvVideoCameraDelegate>
 @property (nonatomic, strong) UIImageView *cameraView;
 @property (nonatomic, retain) CvVideoCamera* videoCamera;
@@ -13,7 +13,7 @@ using namespace cv;
 
 @implementation ViewController
 {
-    CascadeClassifier _cascade;
+    std::shared_ptr<FaceDetector> m_face_detector;
 }
 
 - (void)viewDidLoad {
@@ -33,9 +33,8 @@ using namespace cv;
     
     NSString *xmlPath = [[NSBundle mainBundle ] pathForResource:@"haarcascade_frontalface_default"
                                                          ofType: @"xml"];
-    NSLog(@"%@", xmlPath);
-    _cascade.load([xmlPath cStringUsingEncoding:NSUTF8StringEncoding]);
-
+    m_face_detector = std::make_shared<FaceDetector>([xmlPath cStringUsingEncoding:NSUTF8StringEncoding]);
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -54,21 +53,7 @@ using namespace cv;
 {
     CFTimeInterval t1 = CACurrentMediaTime();
     
-    cvSetErrMode( CV_ErrModeParent );
-
-    std::vector<cv::Rect> faces;
-    _cascade.detectMultiScale( image, faces, 1.2, 2, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30) );
-
-    //    faces   = cvHaarDetectObjects( &tmp_image, _cascade, storage, ( float )1.2, 2, CV_HAAR_DO_CANNY_PRUNING, cvSize( 20, 20 ) );
-
-    if (faces.size() > 0)
-    {
-        for(int i = 0; i < faces.size(); i++ )
-        {
-            cv::Rect rect = faces[i];
-            rectangle(image, cv::Point(rect.x, rect.y), cv::Point(rect.x+rect.width, rect.y+rect.height), Scalar(0,255,0,255), 4);
-        }
-    }
+    m_face_detector->processImage(image);
     
     CFTimeInterval deltaTime = CACurrentMediaTime() - t1;
     NSLog(@"delta time %.0fms", deltaTime*1000);

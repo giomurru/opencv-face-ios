@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D6F684F1E48930B00838AB1 /* FaceDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D6F684C1E4891BA00838AB1 /* FaceDetector.cpp */; };
 		9DEC25CE1E40864A007B3D60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC25CD1E40864A007B3D60 /* main.m */; };
 		9DEC25D11E40864A007B3D60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC25D01E40864A007B3D60 /* AppDelegate.m */; };
 		9DEC25D41E40864A007B3D60 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC25D31E40864A007B3D60 /* ViewController.mm */; };
@@ -49,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D6F684C1E4891BA00838AB1 /* FaceDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaceDetector.cpp; sourceTree = "<group>"; };
+		9D6F684D1E4891BA00838AB1 /* FaceDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FaceDetector.hpp; sourceTree = "<group>"; };
 		9DEC25C91E40864A007B3D60 /* Opencv-Face-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Opencv-Face-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DEC25CD1E40864A007B3D60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9DEC25CF1E40864A007B3D60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -116,9 +119,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D6F684B1E4891BA00838AB1 /* opencv-face-framework */ = {
+			isa = PBXGroup;
+			children = (
+				9D6F684C1E4891BA00838AB1 /* FaceDetector.cpp */,
+				9D6F684D1E4891BA00838AB1 /* FaceDetector.hpp */,
+			);
+			path = "opencv-face-framework";
+			sourceTree = "<group>";
+		};
 		9DEC25C01E40864A007B3D60 = {
 			isa = PBXGroup;
 			children = (
+				9D6F684B1E4891BA00838AB1 /* opencv-face-framework */,
 				9DEC25CB1E40864A007B3D60 /* Opencv-Face-iOS */,
 				9DEC25CA1E40864A007B3D60 /* Products */,
 				9DEC25E31E40868F007B3D60 /* Frameworks */,
@@ -136,11 +149,11 @@
 		9DEC25CB1E40864A007B3D60 /* Opencv-Face-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9DEC26781E40CB40007B3D60 /* haarcascades */,
 				9DEC266C1E40CB17007B3D60 /* hogcascades */,
 				9DEC266E1E40CB17007B3D60 /* lbpcascades */,
 				9DEC25CF1E40864A007B3D60 /* AppDelegate.h */,
 				9DEC25D01E40864A007B3D60 /* AppDelegate.m */,
-				9DEC26781E40CB40007B3D60 /* haarcascades */,
 				9DEC25D21E40864A007B3D60 /* ViewController.h */,
 				9DEC25D31E40864A007B3D60 /* ViewController.mm */,
 				9DEC25D51E40864A007B3D60 /* Main.storyboard */,
@@ -317,6 +330,7 @@
 			files = (
 				9DEC25D41E40864A007B3D60 /* ViewController.mm in Sources */,
 				9DEC25D11E40864A007B3D60 /* AppDelegate.m in Sources */,
+				9D6F684F1E48930B00838AB1 /* FaceDetector.cpp in Sources */,
 				9DEC25CE1E40864A007B3D60 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
